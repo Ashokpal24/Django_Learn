@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+# print("BASE_DIR", BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -26,10 +26,14 @@ SECRET_KEY = "django-insecure-=zfg9q9vu(8swaeojmu3g&9b5m-3_psan*67tfq(s&l7%$u-bz
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "sdmqn3-8000.csb.app"
+    "7wx5sd-8000.csb.app",
 ]
-
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://7wx5sd-8000.csb.app",
+]
+CSRF_ALLOWED_ORIGINS = [
+    "https://7wx5sd-8000.csb.app",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "account",
+    "app"
 ]
 
 MIDDLEWARE = [
@@ -56,7 +62,9 @@ ROOT_URLCONF = "learn_django.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / 'learn_django/templates'
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

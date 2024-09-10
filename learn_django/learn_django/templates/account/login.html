@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<div style="
+display: flex; 
+flex-direction: column; 
+justify-content: center; 
+align-items : center
+">
+    <form method='POST'> 
+        {% csrf_token %}
+        <input style="
+        width:300px;
+        min-width:250px;
+        font-size: 16px;
+        margin-bottom:1rem; 
+        padding:1rem; 
+        border-radius:5px; 
+        border: 1px solid grey" 
+        type="text" 
+        placeholder="username"
+        name="username"
+        />
+
+        <input style="
+        width:300px;
+        min-width:250px;
+        font-size: 16px;
+        margin-bottom:1rem; 
+        padding:1rem; 
+        border-radius:5px; 
+        border: 1px solid grey"
+        type="text" 
+        placeholder="password"
+        name="password"
+        />
+    
+        <button style="
+        width: 200px;
+        font-size: 16px;
+        margin-bottom:1rem; 
+        padding:1rem; 
+        "
+        >
+        Submit
+        </button>
+    </form>
+</div>
+{% endblock %}
