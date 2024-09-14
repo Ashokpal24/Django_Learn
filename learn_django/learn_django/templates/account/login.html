@@ -1,49 +1,20 @@
 {% extends 'base.html' %}
 {% block title %} Login {% endblock %}
 {% block content %}
-<div style="
-display: flex; 
-flex-direction: column; 
-justify-content: center; 
-align-items : center
-">
-    <form method='POST'> 
-        {% csrf_token %}
-        <input style="
-        width:300px;
-        min-width:250px;
-        font-size: 16px;
-        margin-bottom:1rem; 
-        padding:1rem; 
-        border-radius:5px; 
-        border: 1px solid grey" 
-        type="text" 
-        placeholder="username"
-        name="username"
-        />
+<div class="d-flex flex-column align-items-center">
+<form class="p-2 w-50" action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="Username">User Name</label>
+      <input type="text" class="form-control" name="username" placeholder="User Name">
+    </div>
+    <div class="mb-2 form-group">
+      <label for="password1">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p>Need an account ? Please <a href="{% url 'register' %}">register</a></p>
 
-        <input style="
-        width:300px;
-        min-width:250px;
-        font-size: 16px;
-        margin-bottom:1rem; 
-        padding:1rem; 
-        border-radius:5px; 
-        border: 1px solid grey"
-        type="text" 
-        placeholder="password"
-        name="password"
-        />
-    
-        <button style="
-        width: 200px;
-        font-size: 16px;
-        margin-bottom:1rem; 
-        padding:1rem; 
-        "
-        >
-        Submit
-        </button>
-    </form>
 </div>
 {% endblock %}

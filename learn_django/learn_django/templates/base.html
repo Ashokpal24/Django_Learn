@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
-    <h1 style="background-color: wheat;">Header</h1>
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white">Thoughts</a>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">logout</button>
+                </form>
+            {% else %}
+                <span class="h-100 align-middle text-white">logged Out!</span>
+            {% endif %}
+        </div>
+    </nav>
     {% block content %}
     {% endblock %}
-    <h1 style="background-color:grey; color:white">Footer</h1>
 </body>
 </html>
