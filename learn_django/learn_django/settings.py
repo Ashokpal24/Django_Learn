@@ -27,12 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "7wx5sd-8000.csb.app",
+    "probable-space-parakeet-gw7pwwxr477h9rvp-8000.app.github.dev",
+    "localhost"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://7wx5sd-8000.csb.app",
+    "https://probable-space-parakeet-gw7pwwxr477h9rvp-8000.app.github.dev"
 ]
 CSRF_ALLOWED_ORIGINS = [
     "https://7wx5sd-8000.csb.app",
+    "https://probable-space-parakeet-gw7pwwxr477h9rvp-8000.app.github.dev/"
 ]
 # Application definition
 
@@ -45,6 +49,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "account",
     "app",
+    "tag",
+    "author",
+    "article",
+    "comment",
     'widget_tweaks',
     'bootstrap5',
 

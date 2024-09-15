@@ -29,7 +29,7 @@ def login_user(request):
             login(request, user)
             return redirect('home')
         else:
-            return render(request, "account/login.html", {})
+            return render(request, "account/login.html", {"error":"Invalid username or password"})
     return render(request, "account/login.html", {})
 
 

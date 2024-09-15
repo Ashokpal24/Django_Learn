@@ -1,20 +1,34 @@
 {% extends 'base.html' %}
-{% block title %} Login {% endblock %}
+{% block title %} Login {% endblock %} 
 {% block content %}
 <div class="d-flex flex-column align-items-center">
-<form class="p-2 w-50" action="{% url 'login' %}" method="POST">
+  <form class="p-2 w-50" action="{% url 'login' %}" method="POST">
     {% csrf_token %}
     <div class="form-group">
       <label for="Username">User Name</label>
-      <input type="text" class="form-control" name="username" placeholder="User Name">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        placeholder="User Name"
+      />
     </div>
     <div class="mb-2 form-group">
       <label for="password1">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Password">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+      />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-<p>Need an account ? Please <a href="{% url 'register' %}">register</a></p>
-
+  </form>
+  {%if error %}
+  <div class="alert alert-danger w-50" role="alert">
+    {{error}}
+  </div>
+  {% endif %}
+  <p>Need an account ? Please <a href="{% url 'register' %}">register</a></p>
 </div>
 {% endblock %}
