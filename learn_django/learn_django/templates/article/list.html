@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Your Articles {% endblock %}
+{% block content %}
+
+<h1>Your Articles</h1>
+<ul>
+    {% for article in articles %}
+        <li>
+            <div>
+                <a href={% url 'article-detail' article.id %}>{{ article.title }}</a>
+                <form action="{% url 'article-delete' article.pk %}" method="GET">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">Delete Article</button>
+                </form>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+<form action="{% url 'article-create' %}" method="GET">
+    {% csrf_token %}
+    <button class="btn btn-primary">Add Article</button>
+</form>
+{% endblock %}

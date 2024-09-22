@@ -3,7 +3,7 @@
 {% block content %}
 {% load widget_tweaks %}
 <div class="d-flex flex-column align-items-center">
-<form class="p-2" action="{% url 'register' %}" method="POST">
+  <form class="p-2" action="{% url 'register' %}" method="POST">
     {% csrf_token %}
     <div class="form-group">
       <label for="Username">User Name</label>
@@ -16,17 +16,17 @@
       <label for="password1">Password</label>
       {{ form.password1|add_class:"form-control mb-2"|attr:"placeholder:Password"}}
       <ul class="alert alert-warning ps-4 m-0" role="alert">
-          <li>Your password can’t be too similar to your other personal information.</li>
-          <li>Your password must contain at least 8 characters.</li>
-          <li>Your password can’t be a commonly used password.</li>
-          <li>Your password can’t be entirely numeric.</li>
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
       </ul>
     </div>
     <div class="form-group mb-2">
       <label for="password2">Confirm Password</label>
       {{ form.password2|add_class:"form-control"|attr:"placeholder:Confirm Password" }}
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>    
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <p>Already have an account ? <a href="{% url 'login' %}">login</a></p>
 </div>

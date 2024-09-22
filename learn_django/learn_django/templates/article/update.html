@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Edit Article {% endblock %}
+{% block content %}
+<h1>Edit Article</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success">Update</button>
+</form>
+<form action="{% url 'article-list' %}" method="GET">
+    {% csrf_token %}
+    <button class="btn btn-primary">Your articles</button>
+</form>
+{%endblock%}
