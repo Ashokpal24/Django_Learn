@@ -5,8 +5,13 @@
 <ul>
     {% for article in articles %}
         <li>
-            {% comment %} {% url 'article_detail' article.pk %} {% endcomment %}
-            <a href="#">{{ article.title }}</a>
+            
+            <div class="p-2">
+                <a href={% url 'article-detail' article.pk %}>{{ article.title }}</a>
+                <span class="bg-warning bg-opacity-25 border border-warning rounded-3 px-2 py-1 fw-bold text-secondary"> 
+                    {{article.author.username}}
+                </span> 
+            </div>
         </li>
     {% endfor %}
 </ul>

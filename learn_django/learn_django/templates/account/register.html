@@ -5,6 +5,16 @@
 <div class="d-flex flex-column align-items-center">
   <form class="p-2" action="{% url 'register' %}" method="POST">
     {% csrf_token %}
+    {% if form.errors %}
+      {% for field in form %}
+          {% if field.errors %}
+          <div class="alert alert-danger w-100 alert-dismissible fade show" role="alert">
+            <strong> {{ field.label }} </strong>: {{ field.errors|join:", " }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endif %}
+      {% endfor %}
+    {% endif %}
     <div class="form-group">
       <label for="Username">User Name</label>
       {{ form.username|add_class:"form-control mb-2"|attr:"placeholder:User Name" }}

@@ -2,20 +2,23 @@
 {% block title %} detail Article{% endblock %}
 {% block content %}
 <h1>{{ article.title }}</h1>
+<p>currently viewing : {{user}}</p>
 <p>Author: {{ article.author.username }}</p>
 <p>Tags: {% for tag in article.tags.all %} {{ tag.name }} {% if not forloop.last %}, {% endif %} {% endfor %}</p>
 <p>{{ article.content }}</p>
-
-<form action="{% url 'article-delete' article.pk %}" method="GET">
-    {% csrf_token %}
-    <button class="btn btn-danger">Delete Article</button>
-</form>
-<form action="{% url 'article-update' article.pk %}" method="GET">
-    {% csrf_token %}
-    <button class="btn btn-success">Update Article</button>
-</form>
-<form action="{% url 'article-list' %}" method="GET">
-    {% csrf_token %}
-    <button class="btn btn-primary">Your articles</button>
-</form>
+{% include "comment/list.html" with comments=article_comments %}
+{% if user.id == article.author.id %}
+    <form action="{% url 'article-delete' article.pk %}" method="GET">
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete Article</button>
+    </form>
+    <form action="{% url 'article-update' article.pk %}" method="GET">
+        {% csrf_token %}
+        <button class="btn btn-success">Update Article</button>
+    </form>
+    <form action="{% url 'article-list' %}" method="GET">
+        {% csrf_token %}
+        <button class="btn btn-primary">Your articles</button>
+    </form>
+{% endif %}
 {%endblock%}
